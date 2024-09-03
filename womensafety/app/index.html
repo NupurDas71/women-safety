@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety App</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center bg-gray-100">
+    <div class="text-center w-full ">
+        <div class=" maindiv mb-6  py-4 px-4  w-full flex flex-row">
+            <h5 class="align-left logo flex" ><img class="w-full" src="Red and Beige Bold Typography Cosmetic Brand Logo (3).jpg"/></h5>
+            <h5><a href="chat.html"><img class='h-20 w-20 rounded-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2mFXnFEKp72cx1W4XT3cFcN1IgEpShmoEw&s"/>Chatbot</a></h5>
+            <h5><a href="hotspot.html"><img class='h-20 w-20 rounded-full' src="https://icons.veryicon.com/png/o/hardware/linear-icon/hotspot-3.png"/>
+<pre>Hotspot
+Detection</pre>
+</a></h5>
+
+            <p class="hover:border-black transition duration-300"><a href="https://www.youtube.com/@joannasohofficial"><img class='h-20 w-20 rounded-full' src="https://thelocalbrief.com/wp-content/uploads/2022/11/woman-fight-self-defence.jpg"/>Self Defense</p></a>
+           <button class="btneme flex" onclick="updatenumber()"> <p class="hover:border-black transition duration-300"><img class='h-20 w-20 rounded-full' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTflp6BB0R9AQYSntf88-ea-YY-jsUz_668ng&s"/>Emergency Numbers</p></button>
+           <div class="numberdiv bg-white h-10 w-55 pl-2 pr-2">+add numbers</div>
+        </div>
+        <hr>
+        <div class="container w-full mb-4">
+
+        <h1 class="text-6xl font-bold text-red-600 mb-4">Emergency help needed?</h1>
+        <div>
+            <div>
+                <!-- SOS Image Button -->
+                <button id="sos-button" class="h-40 w-40 text-white font-semibold py-2 px-4" onclick="getLocation()">
+                    <img class="rounded-full" src="https://img.freepik.com/premium-vector/sos-button_592324-14724.jpg" alt="SOS Button"/>
+                </button>
+                
+                <!-- SOS Text Button -->
+                <p class="mt-5 text-gray-700 mb-4">Press the button to send SOS</p>
+                <button class="btnsos" onclick="getLocation()">Send SOS</button>
+            </div>
+        
+            <script>
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(sendSOS, handleError);
+                    } else {
+                        alert("Geolocation is not supported by this browser.");
+                    }
+                }
+        
+                function sendSOS(position) {
+                    const { latitude, longitude } = position.coords;
+                    const phoneNumber = '+1234567890'; // Replace with the target phone number
+        
+                    // Send data to your server
+                    fetch('https://your-server-endpoint.com/send-sos', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            phoneNumber: phoneNumber,
+                            latitude: latitude,
+                            longitude: longitude
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('SOS sent successfully!');
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('Failed to send SOS.');
+                    });
+                }
+        
+                function handleError(error) {
+                    console.error('Error getting location:', error);
+                    alert('Unable to retrieve location. Please try again.');
+                }
+            </script>
+        </div>        <hr>
+    </div>
+
+    <!-- Placeholder for gender distribution and alerts -->
+    <div id="gender-distribution" class="mt-6 text-lg"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

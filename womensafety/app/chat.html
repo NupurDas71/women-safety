@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden; /* Ensures the border-radius is applied */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 4px solid rgb(237, 239, 233);
+            position: relative;
+            height: 100%;
+        }
+        .chat-header {
+            background-color: #135224;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            color: #ecefef;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 4px solid #89b02f; /* Border under the header */
+        }
+        .messages-container {
+            padding: 10px;
+            height: 300px; /* Adjust height as needed */
+            overflow-y: auto; /* Enables scrolling if messages overflow */
+        }
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            max-width: 80%;
+            word-wrap: break-word;
+            display: block;
+        }
+        .bot-message {
+            background-color: #ececec;
+            text-align: left;
+            border: 5px solid rgb(100, 188, 42);
+            background-color: rgb(236, 236, 138);
+            border-radius: 10px;
+        }
+        .user-message {
+            background-color: #0084ff;
+            color: white;
+            text-align: right;
+            margin-left: auto;
+        }
+        .input-container {
+            display: flex;
+            border-top: 3px solid #ecefef;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border: 5px solid #169e80;
+            border-radius: 5px;
+            outline: none;
+            font-size: medium;
+        }
+        .input-container button {
+            padding: 14px;
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">Chatbot</div>
+        <div class="messages-container" id="messages">
+            <div class="message bot-message">
+                Hello! How can I assist you?
+            </div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="user_input" placeholder="Type your message..." autofocus>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        const responses = {
+            'greetings': ["hello", "hi", "hii", "hey"],
+            'help': ["help", "problem", "need"],
+            'danger': ["danger", "call the police"],
+            'scared': ["scared", "fear", "worried", "anxious"],
+            'unsafe': ["unsafe", "find somewhere safe"],
+            'night': ["night", "dark", "well-lit"],
+            'isolated': ["isolated", "nobody", "help"],
+            'sos': ["sos", "emergency", "alert"],
+            'emergency': ["emergency", "trigger sos"],
+            'safety': ["safety", "advice", "tips"],
+            'trust': ["trust", "inform", "location"],
+            'threatened': ["threatened", "crowded"]
+        };
+
+        function getResponse(userInput) {
+            const lowerInput = userInput.toLowerCase();
+
+            for (let key in responses) {
+                const keywords = responses[key];
+                for (let keyword of keywords) {
+                    if (lowerInput.includes(keyword)) {
+                        switch (key) {
+                            case 'greetings':
+                                return "Hello! How can I assist you?";
+                            case 'help':
+                                return "Okay, tell me what's your problem or reason for panic.";
+                            case 'danger':
+                                return "You have to call the Police immediately!";
+                            case 'scared':
+                                return "Please stay calm. I'm here to help you.";
+                            case 'unsafe':
+                                return "It’s important to get to a safe place. Can you find somewhere safe?";
+                            case 'night':
+                                return "It’s better to stay in a well-lit area and keep your phone close.";
+                            case 'isolated':
+                                return "Avoid isolated areas and seek help from nearby people.";
+                            case 'sos':
+                                return "Send your location to a trusted contact and alert them.";
+                            case 'emergency':
+                                return "Hold down the power button to trigger an SOS alert on your phone.";
+                            case 'safety':
+                                return "Always be aware of your surroundings and trust your instincts.";
+                            case 'trust':
+                                return "Remember to inform someone you trust about your whereabouts.";
+                            case 'threatened':
+                                return "If you feel threatened, try to move towards a crowded area.";
+                            default:
+                                return "Sorry, I didn't understand that.";
+                        }
+                    }
+                }
+            }
+            return "Sorry, I didn't understand that.";
+        }
+
+        function appendMessage(type, content) {
+            const messageContainer = document.getElementById("messages");
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = content;
+            messageContainer.appendChild(messageDiv);
+            messageContainer.scrollTop = messageContainer.scrollHeight; // Scroll to the bottom
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById("user_input").value;
+            if (userInput.trim() === "") return;
+            appendMessage("user-message", userInput);
+            const botResponse = getResponse(userInput);
+            appendMessage("bot-message", botResponse);
+            document.getElementById("user_input").value = ""; // Clear the input field
+        }
+
+        // Add an event listener for the Enter key
+        document.getElementById("user_input").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent default Enter key behavior (e.g., form submission)
+                sendMessage();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.maindiv{
+   background-color:  #80f0ba;
+   width: 150px;
+   display: flex;
+   flex-direction: row;
+gap:50px;
+}
+.chat-container {
+    width: 375px;
+    margin: 10px auto;
+    padding:0px 10px 20px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 20px solid rgba(254, 12, 12, 0.927);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+#name{
+    height:70px;
+    width:100%;
+    background-color: #0056b3;
+    border-radius:5px;
+margin-bottom: 5px;
+}
+#nameid{
+    align-items: center;
+    text-align: left;
+    padding:10px 10px 10px 10px;
+}
+#chatbox {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message, .bot-message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #dcf8c6;
+    color: #007bff;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #ececec;
+    color: green;
+}
+
+#chat-form {
+    display: flex;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: 7px solid rgb(24, 181, 116);
+    border-radius: 14px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    width: 70px;
+}
+
+
+/* Basic styling for the container */
+.container {
+    text-align: center;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    height:100px;
+    width:150px;
+    border-radius: 14px;
+}
+
+/* Styling for the button */
+.btnsos {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+width: 200px;}
+
+#sos-button:hover {
+    background-color: #422fd3;
+}
+.numberdiv{
+    display: none;
+    position: absolute; /* Absolute positioning */
+    top: 20%; /* Adjust as needed */
+    left: 55%; /* Adjust as needed */
+    transform: translate(-50%, -50%); /* Center element relative to its top/left values */
+    background-color: white;
+    height: 20px; /* Adjust height as needed */
+    width: 200px; /* Adjust width as needed */
+    border: 1px solid #ccc; /* Optional border */
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* Optional shadow */
+    box-sizing: border-box; 
+    padding-top: 5px;
+color:rgb(255, 55, 0);
+    }
+
+.btneme {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+   
+}
